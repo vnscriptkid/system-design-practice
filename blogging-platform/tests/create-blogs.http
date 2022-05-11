@@ -1,0 +1,19 @@
+### create new blog
+POST http://localhost:3000/api/v1/blogs
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "title": "example title",
+    "body": "example body"
+}
+
+### create new blog
+POST http://localhost:3000/api/v1/blogs
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "title": "example title 2",
+    "body": "example body 2"
+}
