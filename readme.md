@@ -1,3 +1,1 @@
-## kafka
-
-- see version `/bin/kafka-topics.sh --version`
+# Practice System Designs by implementing it :)
