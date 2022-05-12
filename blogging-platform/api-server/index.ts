@@ -1,3 +1,4 @@
+import { producer } from "./kafka-producer";
 import * as express from "express";
 import { connectDb, pool } from "./db";
 import { CreateBlogDto } from "./dtos/create-blog.dto";
@@ -78,9 +79,47 @@ app.post(
   }
 );
 
+app.post(
+  "/api/v2/blogs",
+  async (req: express.Request, res: express.Response) => {
+    // TODO: take userId from jwt instead
+    const { userId, title, body } = req.body as CreateBlogDto;
+
+    // check user exists
+    const { rowCount } = await pool.query({
+      text: `select id from users where id = $1`,
+      values: [userId],
+    });
+
+    if (rowCount === 0)
+      return res.status(404).send(`user #${userId} not found.`);
+
+    // create blog post
+    const { rows } = await pool.query({
+      text: "insert into blogs (title, body, author_id) values ($1, $2, $3) returning *;",
+      values: [title, body, userId],
+    });
+
+    // update blogs count of user
+    // await client.query({
+    //   text: "update users set num_of_blogs = num_of_blogs + 1 where id = $1",
+    //   values: [userId],
+    // });
+    const blog = rows[0];
+
+    producer.send({
+      topic: "blog-created",
+      messages: [{ value: JSON.stringify({ userId, blogId: blog.id }) }],
+    });
+
+    return res.status(201).send({ data: blog });
+  }
+);
+
 const PORT = 3000;
 
 app.listen(PORT, async () => {
   await connectDb();
+  await producer.connect();
   console.log(`server is listening on port ${PORT}`);
 });
