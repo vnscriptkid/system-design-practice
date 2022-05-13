@@ -21,13 +21,13 @@ export const connectDb = async () => {
     max: 20,
   });
 
-  await initOnce();
+  // await initOnce();
 };
 
 async function initOnce() {
-  // await pool.query("create database if not exists medium;");
-  await pool.query(`drop table blogs;`);
-  await pool.query(`drop table users;`);
+  // await pool.query("create database medium;");
+  // await pool.query(`drop table blogs;`);
+  // await pool.query(`drop table users;`);
 
   await pool.query(`
       create table if not exists users (

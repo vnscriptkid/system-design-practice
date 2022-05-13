@@ -1,0 +1,19 @@
+{
+  "name": "search-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node-dev index.ts"
+  },
+  "dependencies": {
+    "elasticsearch": "^16.7.3",
+    "kafkajs": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/elasticsearch": "^5.0.40",
+    "@types/kafkajs": "^1.9.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.4"
+  }
+}

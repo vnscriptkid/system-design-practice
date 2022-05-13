@@ -1,4 +1,5 @@
 import { Kafka } from "kafkajs";
+import { BlogCreatedMessage } from "../shared/models";
 import { connectDb, pool } from "./db";
 
 const kafka = new Kafka({
@@ -20,30 +21,14 @@ async function start() {
 
   await consumer.run({
     eachMessage: async ({ topic, partition, message, heartbeat }) => {
-      console.log(message.value.toString());
       const blogCreatedMessage = BlogCreatedMessage.create(
         message.value.toString()
       );
-      console.log({ blogCreatedMessage });
+      console.info({ blogCreatedMessage });
 
-      await incrementBlogCount(blogCreatedMessage.userId);
+      await incrementBlogCount(blogCreatedMessage.authorId);
     },
   });
-}
-
-class BlogCreatedMessage {
-  userId: number;
-  blogId: number;
-
-  constructor(userId: number, blogId: number) {
-    this.userId = userId;
-    this.blogId = blogId;
-  }
-
-  static create(jsonStr: string) {
-    const { userId, blogId } = JSON.parse(jsonStr);
-    return new BlogCreatedMessage(parseInt(userId), parseInt(blogId));
-  }
 }
 
 start();

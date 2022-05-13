@@ -100,16 +100,21 @@ app.post(
       values: [title, body, userId],
     });
 
-    // update blogs count of user
-    // await client.query({
-    //   text: "update users set num_of_blogs = num_of_blogs + 1 where id = $1",
-    //   values: [userId],
-    // });
     const blog = rows[0];
 
     producer.send({
       topic: "blog-created",
-      messages: [{ value: JSON.stringify({ userId, blogId: blog.id }) }],
+      messages: [
+        {
+          value: JSON.stringify({
+            id: blog.id,
+            authorId: blog.author_id,
+            title: blog.title,
+            body: blog.body,
+            publishedAt: blog.published_at,
+          }),
+        },
+      ],
     });
 
     return res.status(201).send({ data: blog });
