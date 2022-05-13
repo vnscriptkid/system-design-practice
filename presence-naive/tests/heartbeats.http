@@ -1,0 +1,10 @@
+###
+POST http://localhost:3002/api/v1/heartbeats
+Content-Type: application/json
+
+{
+    "username": "thanh"
+}
+
+###
+GET http://localhost:3002/api/v1/heartbeats
