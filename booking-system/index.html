@@ -17,7 +17,7 @@
     <script>
       async function run() {
         const tbl = document.getElementById("tbl");
-        const res = await fetch("/seats");
+        const res = await fetch("/api/v1/seats");
         const resarray = await res.json();
         const j = resarray.sort((a, b) => a.id - b.id);
         let tr;
@@ -34,7 +34,10 @@
             try {
               const id = e.target.textContent;
               const name = prompt("Enter your name");
-              const res = await fetch(`/${id}/${name}`, { method: "PUT" });
+              const version = prompt("Enter api version");
+              const res = await fetch(`/api/v${version}/${id}/${name}`, {
+                method: "PUT",
+              });
               const j = await res.json();
               if (j.error) alert("FAILED! Couldn't book! already booked.");
               else alert("Booked successfully!");

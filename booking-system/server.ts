@@ -19,14 +19,14 @@ app.get("/", (req, res) => {
 });
 
 //get all seats
-app.get("/seats", async (req, res) => {
+app.get("/api/v1/seats", async (req, res) => {
   const result = await pool.query("select * from seats");
 
   res.send(result.rows);
 });
 
-//book a seat give the seatId and your name
-app.put("/:id/:name", async (req, res) => {
+// EXPLICIT LOCK
+app.put("/api/v1/:id/:name", async (req, res) => {
   const { id, name } = req.params;
 
   const conn = await pool.connect();
@@ -51,6 +51,36 @@ app.put("/:id/:name", async (req, res) => {
     await conn.query("COMMIT");
 
     res.send(updateResult);
+  } catch (err) {
+    console.log(err);
+    await conn.query("ROLLBACK");
+    res.send(500);
+  } finally {
+    conn.release();
+  }
+});
+
+// IMPLICIT LOCK
+app.put("/api/v2/:id/:name", async (req, res) => {
+  const { id, name } = req.params;
+
+  const conn = await pool.connect();
+
+  try {
+    await conn.query("BEGIN");
+
+    const { rowCount } = await conn.query({
+      text: `
+        update seats set isbooked = true, name = $1
+        where id = $2 and isbooked is false
+    `,
+      values: [name, id],
+    });
+
+    await conn.query("COMMIT");
+
+    if (rowCount === 1) return res.status(200).send({});
+    else return res.status(200).send({ error: "seat has been taken." });
   } catch (err) {
     console.log(err);
     await conn.query("ROLLBACK");

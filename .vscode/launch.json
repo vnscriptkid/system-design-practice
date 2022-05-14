@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "cd booking-system && npm run dev",
+      "command": "cd booking-system && npm run start",
       "name": "BOOKING",
       "request": "launch",
       "type": "node-terminal",
