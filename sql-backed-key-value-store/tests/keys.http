@@ -1,0 +1,35 @@
+###
+POST http://localhost:3000/api/v1/keys
+Content-Type: application/json
+
+{
+    "key": "thanh10",
+    "value": "handsome",
+    "ttl": 1652808585
+}
+
+###
+PUT http://localhost:3000/api/v1/keys
+Content-Type: application/json
+
+{
+    "key": "thanh10",
+    "value": "handsome100",
+    "ttl": 1652808585
+}
+
+###
+POST http://localhost:3000/api/v2/keys
+Content-Type: application/json
+
+{
+    "key": "thanh1010",
+    "value": "handsome200",
+    "ttl": 1652808585
+}
+
+###
+DELETE http://localhost:3000/api/v1/keys/thanh1010
+
+###
+GET http://localhost:3000/api/v1/keys/thanh1010
