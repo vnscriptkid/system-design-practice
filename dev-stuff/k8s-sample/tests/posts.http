@@ -3,5 +3,5 @@ POST http://localhost:30893/posts
 Content-Type: application/json
 
 {
-    "title": "test title"
+    "title": "new title"
 }
