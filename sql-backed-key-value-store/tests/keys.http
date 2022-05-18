@@ -1,5 +1,5 @@
 ###
-POST http://localhost:3000/api/v1/keys
+POST http://localhost/api/v1/keys
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/api/v1/keys
+PUT http://localhost/api/v1/keys
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/api/v2/keys
+POST http://localhost/api/v2/keys
 Content-Type: application/json
 
 {
@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/api/v1/keys/thanh1010
+DELETE http://localhost/api/v1/keys/thanh1010
 
 ###
-GET http://localhost:3000/api/v1/keys/thanh1010
+GET http://localhost/api/v1/keys/thanh1010

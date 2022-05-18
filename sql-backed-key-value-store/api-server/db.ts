@@ -19,7 +19,7 @@ export function getPool(key: string): Pool {
 
 export const connectDb = async () => {
   pool1 = new Pool({
-    host: "localhost",
+    host: "pg1",
     port: 5432,
     user: "postgres",
     password: "123456",
@@ -37,8 +37,8 @@ export const connectDb = async () => {
   });
 
   pool2 = new Pool({
-    host: "localhost",
-    port: 5433,
+    host: "pg2",
+    port: 5432,
     user: "postgres",
     password: "123456",
     database: "store",

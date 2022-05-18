@@ -1,6 +1,24 @@
 version: "3"
 
 services:
+  api1:
+    container_name: api1
+    image: vnscriptkid/sql-kv-api-server
+    ports:
+      - "3000:3000"
+
+  api2:
+    container_name: api2
+    image: vnscriptkid/sql-kv-api-server
+    ports:
+      - "3001:3000"
+
+  nginx:
+    container_name: nginx-lb
+    image: vnscriptkid/sql-kv-nginx
+    ports:
+      - "80:80"
+
   postgres1:
     container_name: pg1
     image: postgres
