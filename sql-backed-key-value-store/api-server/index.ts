@@ -1,5 +1,5 @@
 import * as express from "express";
-import { connectDb, pool } from "./db";
+import { connectDb, getPool } from "./db";
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.post("/api/v1/keys", async (req, res) => {
     return res.json(400).json({ error: `missing key or value` });
 
   try {
-    const { rows } = await pool.query({
+    const { rows } = await getPool(key).query({
       text: `insert into cache (key, value, ttl) values ($1, $2, $3) returning *;`,
       values: [key, value, ttl],
     });
@@ -33,7 +33,7 @@ app.put("/api/v1/keys", async (req, res) => {
     return res.json(400).json({ error: `missing key or value` });
 
   try {
-    const { rows } = await pool.query({
+    const { rows } = await getPool(key).query({
       text: `update cache set value = $1, ttl = $2 where key = $3 returning *;`,
       values: [value, ttl, key],
     });
@@ -53,7 +53,7 @@ app.post("/api/v2/keys", async (req, res) => {
     return res.json(400).json({ error: `missing key or value` });
 
   try {
-    const { rows } = await pool.query({
+    const { rows } = await getPool(key).query({
       text: `
         insert into cache (key, value, ttl) 
         values ($1, $2, $3)
@@ -77,7 +77,7 @@ app.delete("/api/v1/keys/:key", async (req, res) => {
   if (!key) return res.json(400).json({ error: `missing key` });
 
   try {
-    const { rowCount } = await pool.query({
+    const { rowCount } = await getPool(key).query({
       text: `update cache set ttl = -1 where key = $1 and ttl > extract(epoch from now());`,
       values: [key],
     });
@@ -97,7 +97,7 @@ app.get("/api/v1/keys/:key", async (req, res) => {
   if (!key) return res.json(400).json({ error: `missing key` });
 
   try {
-    const { rows, rowCount } = await pool.query({
+    const { rows, rowCount } = await getPool(key).query({
       text: `select * from cache where key = $1`,
       values: [key],
     });

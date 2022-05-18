@@ -1,8 +1,8 @@
 version: "3"
 
 services:
-  postgres:
-    container_name: pg
+  postgres1:
+    container_name: pg1
     image: postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
@@ -10,6 +10,17 @@ services:
       PGDATA: /data/postgres
     ports:
       - "5432:5432"
+    restart: unless-stopped
+
+  postgres2:
+    container_name: pg2
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-123456}
+      PGDATA: /data/postgres
+    ports:
+      - "5433:5432"
     restart: unless-stopped
 
   pgadmin:

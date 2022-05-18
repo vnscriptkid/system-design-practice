@@ -23,9 +23,9 @@ POST http://localhost:3000/api/v2/keys
 Content-Type: application/json
 
 {
-    "key": "thanh1010",
-    "value": "handsome200",
-    "ttl": 1652808585
+    "key": "thanh1011",
+    "value": "handsome1011",
+    "ttl": 1652883831
 }
 
 ###
