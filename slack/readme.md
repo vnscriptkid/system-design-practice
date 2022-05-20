@@ -25,4 +25,6 @@
 - Shard messages table
 - Partition membership table
 
-## notes
+## redis
+
+- `pubsub channels *`
