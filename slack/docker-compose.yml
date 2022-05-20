@@ -1,0 +1,17 @@
+version: "3"
+services:
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  db:
+    image: postgres
+    container_name: pg
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: slack
+    ports:
+      - "5432:5432"
