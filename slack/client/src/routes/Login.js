@@ -1,19 +1,26 @@
-import React from 'react';
-import { extendObservable } from 'mobx';
-import { observer } from 'mobx-react';
-import { Message, Form, Button, Input, Container, Header } from 'semantic-ui-react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import React from "react";
+import { extendObservable } from "mobx";
+import { observer } from "mobx-react";
+import {
+  Message,
+  Form,
+  Button,
+  Input,
+  Container,
+  Header,
+} from "semantic-ui-react";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
 
-import { wsLink } from '../apollo';
+// import { wsLink } from '../apollo';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
 
     extendObservable(this, {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       errors: {},
     });
   }
@@ -26,15 +33,13 @@ class Login extends React.Component {
 
     console.log(response);
 
-    const {
-      ok, token, refreshToken, errors,
-    } = response.data.login;
+    const { ok, token, refreshToken, errors } = response.data.login;
 
     if (ok) {
-      localStorage.setItem('token', token);
-      localStorage.setItem('refreshToken', refreshToken);
-      wsLink.subscriptionClient.tryReconnect();
-      this.props.history.push('/view-team');
+      localStorage.setItem("token", token);
+      localStorage.setItem("refreshToken", refreshToken);
+      // wsLink.subscriptionClient.tryReconnect();
+      this.props.history.push("/view-team");
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
@@ -51,7 +56,11 @@ class Login extends React.Component {
   };
 
   render() {
-    const { email, password, errors: { emailError, passwordError } } = this;
+    const {
+      email,
+      password,
+      errors: { emailError, passwordError },
+    } = this;
 
     const errorList = [];
 
@@ -68,7 +77,13 @@ class Login extends React.Component {
         <Header as="h2">Login</Header>
         <Form>
           <Form.Field error={!!emailError}>
-            <Input name="email" onChange={this.onChange} value={email} placeholder="Email" fluid />
+            <Input
+              name="email"
+              onChange={this.onChange}
+              value={email}
+              placeholder="Email"
+              fluid
+            />
           </Form.Field>
           <Form.Field error={!!passwordError}>
             <Input
@@ -83,7 +98,11 @@ class Login extends React.Component {
           <Button onClick={this.onSubmit}>Submit</Button>
         </Form>
         {errorList.length ? (
-          <Message error header="There was some errors with your submission" list={errorList} />
+          <Message
+            error
+            header="There was some errors with your submission"
+            list={errorList}
+          />
         ) : null}
       </Container>
     );
@@ -91,7 +110,7 @@ class Login extends React.Component {
 }
 
 const loginMutation = gql`
-  mutation($email: String!, $password: String!) {
+  mutation ($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       ok
       token

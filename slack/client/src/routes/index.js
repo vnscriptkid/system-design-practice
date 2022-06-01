@@ -1,11 +1,11 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import decode from 'jwt-decode';
-import Loadable from 'react-loadable';
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import decode from "jwt-decode";
+import Loadable from "react-loadable";
 
 const isAuthenticated = () => {
-  const token = localStorage.getItem('token');
-  const refreshToken = localStorage.getItem('refreshToken');
+  const token = localStorage.getItem("token");
+  const refreshToken = localStorage.getItem("refreshToken");
   try {
     decode(token);
     const { exp } = decode(refreshToken);
@@ -22,16 +22,16 @@ const isAuthenticated = () => {
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
-      (isAuthenticated() ? (
+    render={(props) =>
+      isAuthenticated() ? (
         <Component {...props} />
       ) : (
         <Redirect
           to={{
-            pathname: '/login',
+            pathname: "/login",
           }}
         />
-      ))
+      )
     }
   />
 );
@@ -39,23 +39,23 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Loading = () => <div>...loading</div>;
 
 const AsyncHome = Loadable({
-  loader: () => import('./Home'),
+  loader: () => import("./Home"),
   loading: Loading,
 });
 const AsyncRegister = Loadable({
-  loader: () => import('./Register'),
+  loader: () => import("./Register"),
   loading: Loading,
 });
 const AsyncLogin = Loadable({
-  loader: () => import('./Login'),
+  loader: () => import("./Login"),
   loading: Loading,
 });
 const AsyncViewTeam = Loadable({
-  loader: () => import('./ViewTeam'),
+  loader: () => import("./ViewTeam"),
   loading: Loading,
 });
 const AsyncCreateTeam = Loadable({
-  loader: () => import('./CreateTeam'),
+  loader: () => import("./CreateTeam"),
   loading: Loading,
 });
 
@@ -65,7 +65,11 @@ export default () => (
       <Route path="/" exact component={AsyncHome} />
       <Route path="/register" exact component={AsyncRegister} />
       <Route path="/login" exact component={AsyncLogin} />
-      <PrivateRoute path="/view-team/:teamId?/:channelId?" exact component={AsyncViewTeam} />
+      <PrivateRoute
+        path="/view-team/:teamId?/:channelId?"
+        exact
+        component={AsyncViewTeam}
+      />
       <PrivateRoute path="/create-team" exact component={AsyncCreateTeam} />
     </Switch>
   </BrowserRouter>

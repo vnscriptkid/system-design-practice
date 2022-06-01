@@ -1,0 +1,23 @@
+{
+  "name": "edge-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node-dev index.ts"
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "express": "^4.18.1",
+    "pg": "^8.7.3",
+    "redis": "^4.1.0",
+    "socket.io": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.7",
+    "@types/express": "types/express",
+    "@types/pg": "^8.6.5",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.4"
+  }
+}

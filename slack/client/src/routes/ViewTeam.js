@@ -1,17 +1,26 @@
-import React from 'react';
-import { compose, graphql } from 'react-apollo';
-import findIndex from 'lodash/findIndex';
-import { Redirect } from 'react-router-dom';
-import gql from 'graphql-tag';
+import React, { useContext } from "react";
+import { compose, graphql } from "react-apollo";
+import findIndex from "lodash/findIndex";
+import { Redirect } from "react-router-dom";
+// import gql from "graphql-tag";
 
-import Header from '../components/Header';
-import SendMessage from '../components/SendMessage';
-import AppLayout from '../components/AppLayout';
-import Sidebar from '../containers/Sidebar';
-import MessageContainer from '../containers/MessageContainer';
-import { meQuery } from '../graphql/team';
+import Header from "../components/Header";
+import SendMessage from "../components/SendMessage";
+import AppLayout from "../components/AppLayout";
+import Sidebar from "../containers/Sidebar";
+import MessageContainer from "../containers/MessageContainer";
+import { meQuery } from "../graphql/team";
+import { SocketContext } from "../context/socket";
 
-const ViewTeam = ({ mutate, data: { loading, me }, match: { params: { teamId, channelId } } }) => {
+const ViewTeam = ({
+  // mutate,
+  data: { loading, me },
+  match: {
+    params: { teamId, channelId },
+  },
+}) => {
+  const socket = useContext(SocketContext);
+
   if (loading || !me) {
     return null;
   }
@@ -23,17 +32,20 @@ const ViewTeam = ({ mutate, data: { loading, me }, match: { params: { teamId, ch
   }
 
   const teamIdInteger = parseInt(teamId, 10);
-  const teamIdx = teamIdInteger ? findIndex(teams, ['id', teamIdInteger]) : 0;
+  const teamIdx = teamIdInteger ? findIndex(teams, ["id", teamIdInteger]) : 0;
   const team = teamIdx === -1 ? teams[0] : teams[teamIdx];
 
   const channelIdInteger = parseInt(channelId, 10);
-  const channelIdx = channelIdInteger ? findIndex(team.channels, ['id', channelIdInteger]) : 0;
-  const channel = channelIdx === -1 ? team.channels[0] : team.channels[channelIdx];
+  const channelIdx = channelIdInteger
+    ? findIndex(team.channels, ["id", channelIdInteger])
+    : 0;
+  const channel =
+    channelIdx === -1 ? team.channels[0] : team.channels[channelIdx];
 
   return (
     <AppLayout>
       <Sidebar
-        teams={teams.map(t => ({
+        teams={teams.map((t) => ({
           id: t.id,
           letter: t.name.charAt(0).toUpperCase(),
         }))}
@@ -47,8 +59,12 @@ const ViewTeam = ({ mutate, data: { loading, me }, match: { params: { teamId, ch
         <SendMessage
           channelId={channel.id}
           placeholder={channel.name}
-          onSubmit={async (text) => {
-            await mutate({ variables: { text, channelId: channel.id } });
+          onSubmit={async (content) => {
+            // await mutate({ variables: { content, channelId: channel.id } });
+            // console.log(`@@ send msg: `, content, channel.id);
+            const msg = { content, channelId };
+            console.log(`@@ emit over socket`, msg);
+            socket.emit("message", msg);
           }}
         />
       )}
@@ -56,13 +72,13 @@ const ViewTeam = ({ mutate, data: { loading, me }, match: { params: { teamId, ch
   );
 };
 
-const createMessageMutation = gql`
-  mutation($channelId: Int!, $text: String!) {
-    createMessage(channelId: $channelId, text: $text)
-  }
-`;
+// const createMessageMutation = gql`
+//   mutation ($channelId: Int!, $text: String!) {
+//     createMessage(channelId: $channelId, text: $text)
+//   }
+// `;
 
 export default compose(
-  graphql(meQuery, { options: { fetchPolicy: 'network-only' } }),
-  graphql(createMessageMutation),
+  graphql(meQuery, { options: { fetchPolicy: "network-only" } })
+  // graphql(createMessageMutation)
 )(ViewTeam);
