@@ -27,6 +27,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get("/api/health", (req, res) => res.status(200).json({ alive: true }));
+
 require("./routes/authRoutes")(app);
 require("./routes/blogRoutes")(app);
 require("./routes/uploadRoutes")(app);
