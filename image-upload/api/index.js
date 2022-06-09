@@ -6,6 +6,7 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 const keys = require("./config/keys");
+var cors = require("cors");
 
 require("./models/User");
 require("./models/Blog");
@@ -17,6 +18,7 @@ mongoose.connect(keys.mongoURI, { useMongoClient: true });
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(
   cookieSession({
