@@ -7,7 +7,8 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-    - http:
+    - host: www.cheo.live
+      http:
         paths:
           - path: /?(.*)
             pathType: Prefix

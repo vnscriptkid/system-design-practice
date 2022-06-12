@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "axios": "^0.27.2",
     "materialize-css": "^1.0.0",
@@ -16,7 +15,7 @@
     "redux-thunk": "^2.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "HOST=www.cheo.live && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

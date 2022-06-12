@@ -148,6 +148,9 @@ gcloud compute disks create \
 - `kubectl -n redis create configmap ms-cm --from-literal=REDIS_URL=${REDIS_URL}`
 - `kubectl -n default create configmap ms-cm --from-env-file=image-upload.properties`
 - `kubectl -n default get configmaps -o yaml`
+- `kubectl -n default get configmaps -o yaml > now.properties.yml`
+- `kubectl apply -f now.properties.yml`
+- `kubectl rollout restart deployment client-deployment`
 
 - https://humanitec.com/blog/handling-environment-variables-with-kubernetes
 
@@ -156,6 +159,7 @@ https://gitlab.com/codeching/kubernetes-multicontainer-application-react-nodejs-
 https://www.youtube.com/watch?v=OVVGwc90guo
 
 - `kubectl apply -f client-depl.yml`
+- `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml`
 
 ## notes
 
