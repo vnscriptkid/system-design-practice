@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  coredns:
+    container_name: coredns
+    build:
+      context: ./coredns
+    restart: on-failure # other option: always - if you want persistent through host reboots
+    expose:
+      - "53"
+      - "53/udp"
+    ports:
+      - "53:53"
+      - "53:53/udp"
+    volumes:
+      - "./coredns/dns-config:/etc/coredns"
