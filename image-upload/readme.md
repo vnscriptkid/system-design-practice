@@ -160,6 +160,7 @@ https://www.youtube.com/watch?v=OVVGwc90guo
 
 - `kubectl apply -f client-depl.yml`
 - `kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.0/deploy/static/provider/cloud/deploy.yaml`
+- https://blog.logrocket.com/deploy-react-app-kubernetes-using-docker/
 
 ## notes
 
@@ -168,3 +169,9 @@ https://www.youtube.com/watch?v=OVVGwc90guo
 ## domain name
 
 https://medium.com/retina-ai-health-inc/cloud-security-dns-configuration-and-tls-encryption-in-google-kubernetes-engine-658303080bc7
+
+## cli
+
+- `kubectl exec --stdin --tty server-deployment-7bf4875bdb-vhv7w -- /bin/sh`
+- `netstat -tunlp`
+- `ps -T -p 20`
