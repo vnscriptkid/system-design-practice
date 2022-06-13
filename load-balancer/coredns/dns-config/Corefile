@@ -13,6 +13,7 @@
 
 example.org {
     file /etc/coredns/db.example.org
+    loadbalance round_robin
     log
 }
 
