@@ -1,5 +1,5 @@
 import { connectDb, pool } from "./db";
-var cron = require("node-cron");
+var cron = require('node-cron');
 
 async function main() {
   await connectDb();

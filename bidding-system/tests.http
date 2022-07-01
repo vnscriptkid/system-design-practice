@@ -1,0 +1,44 @@
+### ping auction service
+GET http://localhost:8500/api/ping
+
+### create auction
+POST http://localhost:8500/api/auctions
+Content-Type: application/json
+
+{
+    "title": "exp in 90secs"
+}
+
+### get auctions
+GET http://localhost:8500/api/auctions
+
+### get auction by id
+GET http://localhost:8500/api/auctions/1
+
+### bid
+POST http://localhost:8500/api/auctions/1/bids
+Content-Type: application/json
+
+{
+    "amount": 11
+}
+
+### get auth token from auth0
+POST https://dev-lbozycin.us.auth0.com/oauth/token
+Content-Type: application/json
+
+{
+    "client_id": "5uDxMMTWDHOrh7u6qYqFe7fdCzCqiIPv",
+    "username": "vnscriptkid@gmail.com",
+    "password": "C4ub3nh0@",
+    "grant_type": "password",
+    "scope": "openid"
+}
+
+### validate token
+GET http://localhost:8501/authorize
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkFRRy1kWVdEVUVRS0ozMmFaWU52TiJ9.eyJuaWNrbmFtZSI6InZuc2NyaXB0a2lkIiwibmFtZSI6InZuc2NyaXB0a2lkQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci85NWExMGZlMTA5YTgxZmNjYjkxNjZjOWRkMjc2NWIzOT9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRnZuLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDIyLTA2LTMwVDE3OjMzOjExLjQwOVoiLCJlbWFpbCI6InZuc2NyaXB0a2lkQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2Rldi1sYm96eWNpbi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJiZDNmNDU1MTA1NDYxZGI0ZWQwNDliIiwiYXVkIjoiNXVEeE1NVFdESE9yaDd1NnFZcUZlN2ZkQ3pDcWlJUHYiLCJpYXQiOjE2NTY2MTAzOTEsImV4cCI6MTY1NjY0NjM5MX0.XwfSaCKz25QRNpJdggOmCjMoH9mpmQZhkE-MRq1ckZ50uz5j1gXGDq43jxYoiulv7AtyqH3rRGEv6c0CD7E4i2zMy6MRXdSaOqHUbdn55hF19aGnUfWCAGdvQ73kZ4GwQ0V8YGsVT4dGS1s2LIa9gsgpxTlD_8fKRcJVbg3RT2QvjMSBSAop7W9GQA5zb3UX8m3lwLrMJQ4fliwR-2Yj-OwuquNaFAuy1wY84hLbSEeh89bWTSnzFk36Ry_KZT7LH5Ibi7lPfbdP3AoiXpaobel955Xm7DrTPF06UizI8i_Ji-9AZz_G3RCO_t_ibAO6ceDT3oiOxjOQdPujYWP0qw
+
+### get auctions
+GET http://localhost:8500/api/auctions
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkFRRy1kWVdEVUVRS0ozMmFaWU52TiJ9.eyJuaWNrbmFtZSI6InZuc2NyaXB0a2lkIiwibmFtZSI6InZuc2NyaXB0a2lkQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci85NWExMGZlMTA5YTgxZmNjYjkxNjZjOWRkMjc2NWIzOT9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRnZuLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDIyLTA2LTMwVDE3OjMzOjExLjQwOVoiLCJlbWFpbCI6InZuc2NyaXB0a2lkQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2Rldi1sYm96eWNpbi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjJiZDNmNDU1MTA1NDYxZGI0ZWQwNDliIiwiYXVkIjoiNXVEeE1NVFdESE9yaDd1NnFZcUZlN2ZkQ3pDcWlJUHYiLCJpYXQiOjE2NTY2MTAzOTEsImV4cCI6MTY1NjY0NjM5MX0.XwfSaCKz25QRNpJdggOmCjMoH9mpmQZhkE-MRq1ckZ50uz5j1gXGDq43jxYoiulv7AtyqH3rRGEv6c0CD7E4i2zMy6MRXdSaOqHUbdn55hF19aGnUfWCAGdvQ73kZ4GwQ0V8YGsVT4dGS1s2LIa9gsgpxTlD_8fKRcJVbg3RT2QvjMSBSAop7W9GQA5zb3UX8m3lwLrMJQ4fliwR-2Yj-OwuquNaFAuy1wY84hLbSEeh89bWTSnzFk36Ry_KZT7LH5Ibi7lPfbdP3AoiXpaobel955Xm7DrTPF06UizI8i_Ji-9AZz_G3RCO_t_ibAO6ceDT3oiOxjOQdPujYWP0qw

@@ -24,4 +24,69 @@ services:
       - "${PGADMIN_PORT:-5050}:80"
     restart: unless-stopped
 
- 
+  auction-service:
+    container_name: bidding-auction-service
+    depends_on:
+      - postgres
+    build:
+      context: ./auction-service
+    environment:
+      PORT: 8500
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: 123456
+      DB_NAME: bidding
+      AUTH_SERVICE_URL: http://auth-service:8501
+    ports:
+      - 8500:8500
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.auction-service.rule=Host(`bidding.localhost`)"
+      - "traefik.http.routers.auction-service.entrypoints=web"
+      - "traefik.http.services.auction-service.loadbalancer.passhostheader=false"
+      - "traefik.http.services.auction-service.loadbalancer.server.port=8500"
+
+  auth-service:
+    container_name: bidding-auth-service
+    build:
+      context: ./auth-service
+    environment:
+      PORT: 8501
+    restart: always
+
+  expire-auctions-service:
+    container_name: bidding-expire-auctions-service
+    depends_on:
+      - postgres
+    build:
+      context: ./expire-auctions-service
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: 123456
+      DB_NAME: bidding
+
+  reverse-proxy:
+    container_name: bidding-traefik
+    # The official v2 Traefik docker image
+    image: traefik:2.1
+    # Enables the web UI and tells Traefik to listen to docker
+    command: 
+      - "--api.insecure=true" 
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      # The HTTP port
+      - "80:80"
+      # The Web UI (enabled by --api.insecure=true)
+      - "8080:8080"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      # Note that in Windows a leading double slash (//) is required to address the Docker socket on the host.
+      # https://tomgregory.com/running-docker-in-docker-on-windows/#All_about_varrundockersock
+      # https://betterprogramming.pub/about-var-run-docker-sock-3bfd276e12fd
+      - //var/run/docker.sock:/var/run/docker.sock
