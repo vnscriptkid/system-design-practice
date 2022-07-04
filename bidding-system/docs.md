@@ -13,3 +13,7 @@
 - https://github.com/heyMP/haxcms-oauth
 - https://geek-cookbook.funkypenguin.co.nz/ha-docker-swarm/traefik-forward-auth/dex-static/
 - https://github.com/thomseddon/traefik-forward-auth/blob/master/examples/traefik-v2/swarm/docker-compose.yml
+
+## rabbitmq
+- https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html
+- https://www.cloudamqp.com/blog/part3-rabbitmq-for-beginners_the-management-interface.html
