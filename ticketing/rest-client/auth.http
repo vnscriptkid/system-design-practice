@@ -1,0 +1,26 @@
+### Signup
+POST http://ticketing.dev/api/users/signup
+Content-Type: application/json
+
+{
+    "email": "vnscriptkid@gmail.com",
+    "password": "123456"
+}
+
+### Signin
+POST http://ticketing.dev/api/users/signin
+Content-Type: application/json
+
+{
+    "email": "vnscriptkid@gmail.com",
+    "password": "123456"
+}
+
+### Signout
+POST http://ticketing.dev/api/users/signout
+
+### Current-user
+GET http://ticketing.dev/api/users/currentuser
+
+### not found
+GET http://ticketing.dev/api/users/abc
