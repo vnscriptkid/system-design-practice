@@ -1,0 +1,23 @@
+### Create a ticket
+POST http://ticketing.dev/api/tickets
+Content-Type: application/json
+
+{
+    "title": "opera",
+    "price": "100"
+}
+
+### Get a ticket
+GET http://ticketing.dev/api/tickets/62cabbb80eb468003039da29
+
+### Get all tickets
+GET http://ticketing.dev/api/tickets
+
+### Update a ticket
+PUT http://ticketing.dev/api/tickets/62cabbb80eb468003039da29
+Content-Type: application/json
+
+{
+    "title": "opera-new",
+    "price": 120
+}

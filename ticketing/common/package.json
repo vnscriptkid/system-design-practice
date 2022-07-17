@@ -1,6 +1,6 @@
 {
-  "name": "@sgtickets/common",
-  "version": "1.0.24",
+  "name": "@kidsorg/common",
+  "version": "1.0.0",
   "description": "",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -8,15 +8,17 @@
     "build/**/*"
   ],
   "scripts": {
-    "clean": "del ./build/*",
+    "clean": "rimraf ./build/*",
     "build": "npm run clean && tsc",
-    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish"
+    "com:pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish",
+    "build:pub": "npm run build && npm publish"
   },
   "keywords": [],
-  "author": "",
+  "author": "vnscriptkid",
   "license": "ISC",
   "devDependencies": {
     "del-cli": "^3.0.0",
+    "rimraf": "^3.0.2",
     "typescript": "^3.8.3"
   },
   "dependencies": {

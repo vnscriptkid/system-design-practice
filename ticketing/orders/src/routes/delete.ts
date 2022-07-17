@@ -3,7 +3,7 @@ import {
   requireAuth,
   NotFoundError,
   NotAuthorizedError,
-} from '@sgtickets/common';
+} from '@kidsorg/common';
 import { Order, OrderStatus } from '../models/order';
 import { OrderCancelledPublisher } from '../events/publishers/order-cancelled-publisher';
 import { natsWrapper } from '../nats-wrapper';

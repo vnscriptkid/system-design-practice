@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
-import { validateRequest, BadRequestError } from '@sgtickets/common';
+import { validateRequest, BadRequestError } from '@kidsorg/common';
 
 import { Password } from '../services/password';
 import { User } from '../models/user';

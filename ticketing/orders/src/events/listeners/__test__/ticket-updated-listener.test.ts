@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { Message } from 'node-nats-streaming';
-import { TicketUpdatedEvent } from '@sgtickets/common';
+import { TicketUpdatedEvent } from '@kidsorg/common';
 import { TicketUpdatedListener } from '../ticket-updated-listener';
 import { natsWrapper } from '../../../nats-wrapper';
 import { Ticket } from '../../../models/ticket';
@@ -63,7 +63,7 @@ it('does not call ack if the event has a skipped version number', async () => {
 
   try {
     await listener.onMessage(data, msg);
-  } catch (err) {}
+  } catch (err) { }
 
   expect(msg.ack).not.toHaveBeenCalled();
 });

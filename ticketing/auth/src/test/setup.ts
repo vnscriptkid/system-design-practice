@@ -38,7 +38,7 @@ afterAll(async () => {
   await mongoose.connection.close();
 });
 
-(global as any).signin = async () => {
+global.signin = async () => {
   const email = 'test@test.com';
   const password = 'password';
 

@@ -2,7 +2,7 @@ import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
-import { errorHandler, NotFoundError } from '@sgtickets/common';
+import { errorHandler, NotFoundError } from '@kidsorg/common';
 
 import { currentUserRouter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
@@ -11,7 +11,7 @@ import { signupRouter } from './routes/signup';
 
 const app = express();
 app.set('trust proxy', true);
-app.use(json());
+app.use(json() as any);
 app.use(
   cookieSession({
     signed: false,
