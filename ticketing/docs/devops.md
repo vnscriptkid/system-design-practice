@@ -32,6 +32,7 @@
 
 ## shared env vars btw services
 - `kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf`
+- `kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=asdf`
 - `kubectl get secrets`
 
 ## services communication
@@ -47,3 +48,6 @@
     - ingress-nginx
 - check: `kubectl get namespaces`
 - `kubectl get services -n ingress-nginx`
+
+## port forwarding
+- `kubectl port-forward nats-depl-76f8b46b59-rpvn6 8222:8222`
