@@ -1,0 +1,19 @@
+version: "3.3"
+services:
+  redis:
+    image: redis
+    container_name: queueing-redis
+    ports:
+      - "6379:6379"
+    restart: always
+  # bullboard:
+  #   container_name: bullboard
+  #   image: deadly0/bull-board
+  #   restart: always
+  #   ports:
+  #     - 3009:3000
+  #   environment:
+  #     REDIS_HOST: redis
+  #     REDIS_PORT: 6379
+  #   depends_on:
+  #     - redis
