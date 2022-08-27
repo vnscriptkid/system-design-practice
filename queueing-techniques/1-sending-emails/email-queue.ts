@@ -20,7 +20,7 @@ export class EmailQueue {
     }
 
     async add(job: any) {
-        await this.queue.add(job);
+        await this.queue.add(job, { attempts: 5, backoff: { type: 'exponential' } });
     }
 
     process: ProcessCallbackFunction<any> = async (job, done) => {
@@ -29,6 +29,7 @@ export class EmailQueue {
             await sendVerificationEmail(payload.email);
             done(null)
         } catch (err) {
+            console.log('retrying: ' + payload.email)
             done(err as any);
         }
     }

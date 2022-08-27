@@ -44,6 +44,9 @@ export async function registerUser(newUser: { username: string, password: string
 
 export async function sendVerificationEmail(email: string) {
     await wait(2000); // simulate calling mail service
+    if (Math.random() > 0.5) {
+        throw new Error('unexpected err');
+    }
     console.log('Verification mail has been sent to ' + email);
 }
 
