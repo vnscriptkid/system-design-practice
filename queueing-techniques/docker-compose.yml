@@ -6,6 +6,18 @@ services:
     ports:
       - "6379:6379"
     restart: always
+
+  postgres:
+    container_name: queueing-pg
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-123456}
+      POSTGRES_DB: tickets
+      PGDATA: /data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
   # bullboard:
   #   container_name: bullboard
   #   image: deadly0/bull-board
