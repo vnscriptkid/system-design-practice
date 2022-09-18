@@ -1,0 +1,23 @@
+[
+    {
+        "airline": "DELTA",
+        "from": "ABC",
+        "to": "XYZ",
+        "price": 100.45,
+        "date": "2022-12-22"
+    },
+    {
+        "airline": "DELTA",
+        "from": "ABC",
+        "to": "DEF",
+        "price": 200.75,
+        "date": "2022-12-23"
+    },
+    {
+        "airline": "DELTA",
+        "from": "DEF",
+        "to": "MNP",
+        "price": 150.30,
+        "date": "2022-12-24"
+    }
+]

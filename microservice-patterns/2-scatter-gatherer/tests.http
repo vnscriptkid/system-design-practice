@@ -1,11 +1,17 @@
-### products
-GET http://localhost:3003/products/1
+### delta
+GET http://localhost:3003/delta-flights/ABC/DEF
 
-### promotions
-GET http://localhost:3001/promotions
+### frontier
+POST http://localhost:3002/frontier-flights
+Content-Type: application/json
 
-### reviews
-GET http://localhost:3002/reviews?productId=1
+{
+    "from": "ABC",
+    "to": "XYZ"
+}
+
+### jetblue
+GET http://localhost:3001/jetblue-flights/ABC/DEF
 
 ### agg
 GET http://localhost:3000
