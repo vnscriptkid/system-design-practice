@@ -1,9 +1,0 @@
-### get user by id
-GET http://localhost:3000/users/1
-
-### deduct user by id
-PUT http://localhost:3000/users/1?type=restore&amount=10
-Content-Type: application/json
-
-### get product by id
-GET http://localhost:3001/products/2

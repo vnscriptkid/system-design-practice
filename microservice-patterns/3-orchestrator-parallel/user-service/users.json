@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "name": "Thanh Nguyen",
+        "balance": 437,
+        "address": {
+            "street": "Lieu Giai",
+            "city": "Hanoi",
+            "state": "Hanoi",
+            "zipCode": "100000"
+        }
+    }
+]

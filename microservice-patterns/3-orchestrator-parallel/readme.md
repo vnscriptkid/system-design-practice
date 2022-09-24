@@ -42,7 +42,7 @@
     - quantity: 1
     - status: "SUCCESS"
     - expectedDelivery: "2022-04-12"
-    - address:
+    - shippingAddress:
         - street: "Lieu Giai"
         - city: "Hanoi"
         - state: Hanoi"

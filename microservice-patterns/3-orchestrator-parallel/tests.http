@@ -1,0 +1,12 @@
+### get user by id
+GET http://localhost:3000/pro
+
+### place order
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+    "productId": 2,
+    "quantity": 2,
+    "userId": 1
+}
