@@ -1,0 +1,8 @@
+### products
+GET http://localhost:3003/products/1
+
+### reviews
+GET http://localhost:3002/reviews?productId=1
+
+### agg
+GET http://localhost:3000/products/1

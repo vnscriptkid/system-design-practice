@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "category": "furniture",
+        "description": "nice",
+        "price": 100
+    },
+    {
+        "id": 2,
+        "category": "veges",
+        "description": "green",
+        "price": 72
+    },
+    {
+        "id": 3,
+        "category": "drinks",
+        "description": "coffee",
+        "price": 2
+    },
+    {
+        "id": 4,
+        "category": "toys",
+        "description": "legos",
+        "price": 22
+    }
+]
