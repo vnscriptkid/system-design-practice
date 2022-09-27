@@ -3,6 +3,7 @@
 // https://tutorialedge.net/typescript/angular/stability-patterns-in-angular/
 // https://martinfowler.com/bliki/CircuitBreaker.html
 // https://www.npmjs.com/package/opossum
+// https://betterprogramming.pub/how-to-create-circuit-breaker-in-ts-1416ba076760
 
 enum State {
     OPEN,
