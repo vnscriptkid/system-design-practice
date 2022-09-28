@@ -1,0 +1,5 @@
+###
+GET http://localhost:3000/cpu-task?n=42
+
+###
+GET http://localhost:3000/io-task
