@@ -29,5 +29,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
     "jsonwebtoken": "^8.5.1",
+    "node-nats-streaming": "^0.2.6",
+    "ioredis": "^5.2.3"
   }
 }
