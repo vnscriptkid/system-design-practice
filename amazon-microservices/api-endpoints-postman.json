@@ -1,0 +1,471 @@
+{
+	"info": {
+		"_postman_id": "0ee47203-7522-4b59-a93a-10d07a3b10ed",
+		"name": "Microservices With Laravel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryId\": 1,\n    \"name\": \"Macbbok Pro\",\n    \"description\": \"Sed id soluta esse. Quasi odit dolor esse eligendi at non illum. In illum voluptas atque officiis autem quasi sit saepe. Qui rerum qui nulla consequuntur qui dolorem quis. Ratione iure ut nulla et quidem pariatur architecto. Excepturi ut iste perferendis et molestias est. Tenetur qui distinctio eligendi quia dolore in omnis. Facilis magni cum voluptatum. Eligendi quia ut id sint quo sit. Illum autem occaecati quo mollitia quam omnis debitis. Ipsam quia consequuntur eos ullam repellendus atque ut. Corporis dolore consequuntur quisquam eos. Voluptatem qui et doloremque molestias. Quia et quia et quis. Ea sit ducimus provident quis doloribus et qui. Ut asperiores aut eum ea eius ipsam. Et cumque eum omnis sunt distinctio necessitatibus. Corporis rerum magni praesentium voluptatem provident. Quia fuga impedit deserunt qui dicta ducimus. Ex quia quo repellat esse cum non cum. Rem cumque molestias error eos. Tempora aliquid nulla vel quis ut laudantium voluptate. Accusamus aliquid cum cupiditate recusandae sequi quos. Soluta sed facere dolores. Quo rem et deserunt et debitis fugit id. Nihil modi in sit amet repellat consectetur. Rerum voluptatibus illo et corrupti. Voluptas suscipit ut est dolore. Similique possimus ut sint et. Fuga cupiditate sed sit fuga. Unde provident aut aut hic ea sunt sit. Culpa consequatur dolores ut excepturi. Similique explicabo ut rem beatae minima et recusandae. Cum illum ut sed architecto reiciendis eos quia aut. Aut similique odit dolorem facere qui qui. Id vel est corrupti minima consectetur cum. Magni tempora quibusdam provident velit. Ea aut reiciendis incidunt. Aut aut rerum temporibus saepe sed quia. Voluptas veritatis nesciunt enim id reiciendis quia similique. Quibusdam aspernatur et ipsum libero dignissimos aut incidunt consequatur. Cumque nesciunt rerum rerum laborum. In asperiores quam magni tenetur. Assumenda nemo sit ut magnam facilis molestias dolorum esse. Facere aut est porro iure. Et reiciendis dignissimos et asperiores vel accusantium. Velit soluta libero saepe. Inventore quis quaerat sequi necessitatibus laboriosam aut rerum ut. Assumenda eum asperiores repellendus omnis dicta. Placeat velit reiciendis voluptatum rem assumenda dolores dolores repellat. Sed aut aliquid sequi iusto voluptas voluptas. Dignissimos quisquam cumque qui dolores. Est vero consectetur eum dicta et. Dolore dolores est eveniet animi enim sed. Repellendus itaque rerum et aut. Aut ullam quibusdam occaecati officia nesciunt quia aut. Sed odit molestiae harum voluptates rerum voluptas. Laborum et repudiandae neque. Numquam perspiciatis aliquam omnis veritatis officia hic nemo. Temporibus at veritatis ad ut consequatur explicabo. Voluptas odit autem laudantium qui id est voluptatem. Porro consequatur eum culpa earum veniam vel dignissimos. Inventore quis vel quia molestias reprehenderit dicta. Quaerat sint eius asperiores ea quia et dicta. Aut repellendus facilis sint dolore. Ipsa velit error et eveniet. Voluptatibus eaque ducimus possimus voluptas delectus est ducimus.\",\n    \"price\": 1190.99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/products",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/products?sortBy=name&sortDirection=asc",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "name"
+								},
+								{
+									"key": "sortDirection",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/products/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Category\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/categories",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/categories",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ratings",
+			"item": [
+				{
+					"name": "Rate Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/products/1/ratings",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"3",
+								"ratings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products Ratings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/products/ratings?productIds[]=1&productIds[]=2",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"ratings"
+							],
+							"query": [
+								{
+									"key": "productIds[]",
+									"value": "1"
+								},
+								{
+									"key": "productIds[]",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Ratings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/products/1/ratings",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"1",
+								"ratings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Warehouse",
+			"item": [
+				{
+					"name": "Create Inventory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 1,\n    \"warehouseId\": 1,\n    \"quantity\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/inventory",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Inventory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/inventory/products/1",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"inventory",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products Inventory",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 1,\n    \"warehouseId\": 1,\n    \"quantity\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/inventory/products?productIds[]=1&productIds[]=2",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"inventory",
+								"products"
+							],
+							"query": [
+								{
+									"key": "productIds[]",
+									"value": "1"
+								},
+								{
+									"key": "productIds[]",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Warehouse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test warehouse\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/warehouses",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"warehouses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Catalog",
+			"item": [
+				{
+					"name": "Get Catalog",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/catalog?sortBy=name&sortDirection=asc",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"catalog"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "name"
+								},
+								{
+									"key": "sortDirection",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": 1,\n    \"quantity\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/v1/orders",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
