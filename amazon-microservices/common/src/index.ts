@@ -26,4 +26,7 @@ export * from './dtos/category-data';
 export * from './dtos/product-data';
 
 export * from './events/event';
-export * from './events/event-types';    
+export * from './events/event-types';
+export * from './events/product-created.event';
+
+export * from './services/redis.service';    
