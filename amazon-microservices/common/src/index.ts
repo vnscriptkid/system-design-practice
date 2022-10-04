@@ -29,4 +29,6 @@ export * from './events/event';
 export * from './events/event-types';
 export * from './events/product-created.event';
 
-export * from './services/redis.service';    
+export * from './services/redis.service';
+
+export * from './utils/index';    

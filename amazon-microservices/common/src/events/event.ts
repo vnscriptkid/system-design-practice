@@ -1,5 +1,10 @@
+import { toJSON } from "../utils"
+
 export abstract class AppEvent {
     public toJSON() {
-        return JSON.stringify(this);
+        // plug out methods, keep only props
+        return toJSON(this)
     }
 }
+
+

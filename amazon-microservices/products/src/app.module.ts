@@ -13,10 +13,10 @@ import { RedisService } from './redis.service';
   providers: [
     AppService,
     RedisService,
+    Redis,
     ...productsProviders,
     ...categoriesProviders,
     CreateProductAction,
-    Redis
   ],
 })
 export class AppModule { }

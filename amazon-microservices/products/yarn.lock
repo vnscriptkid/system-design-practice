@@ -667,10 +667,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@kidsorg/amazon-common@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@kidsorg/amazon-common/-/amazon-common-1.0.2.tgz#56ac55b1413e873a369f1e76e735de47428b3269"
-  integrity sha512-vvww1Pxjr+SJn7TUbne64DXRWb7Nq2xWkGuPBJli3ZPAqyOM0Lcg0ysfoAgm8BEwL/PXY9EB3oQum36JS9En2A==
+"@kidsorg/amazon-common@^1.0.3":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@kidsorg/amazon-common/-/amazon-common-1.0.4.tgz#36873696e079a18af0b70b50761bded6bfa69013"
+  integrity sha512-KVQsX5wRKbYJNzz0rkcCDEoy+ju+EAVjESeQJorOE+PT7IsaKhPZuxghCo/vh5wU+Vh4ttkpvcAFoDHHq2mf9Q==
   dependencies:
     "@types/cookie-session" "^2.0.39"
     "@types/express" "^4.17.5"

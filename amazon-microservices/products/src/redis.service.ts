@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { BaseRedisService, ProductData, ProductCreatedEvent } from '@kidsorg/amazon-common'
+import { ProductData, ProductCreatedEvent } from '@kidsorg/amazon-common'
+import { BaseRedisService } from './base-redis.service';
 
 @Injectable()
 export class RedisService extends BaseRedisService {
