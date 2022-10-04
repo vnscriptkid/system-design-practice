@@ -1,0 +1,13 @@
+### hello
+http://localhost:3000
+
+### Create Product
+POST http://localhost:3000/api/v1/products
+Content-Type: application/json
+
+{
+    "name": "something",
+    "description": "useful",
+    "price": 250,
+    "category_id": "b36527ef-c9e6-4f1f-8a4c-e99a0e97ae77"
+}

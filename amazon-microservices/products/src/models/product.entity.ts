@@ -1,11 +1,22 @@
-import { DataTypes } from 'sequelize';
-import { Table, Column, Model, PrimaryKey, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { DataTypes, Optional } from 'sequelize';
+import { Table, Column, Model, PrimaryKey, ForeignKey, BelongsTo, Default } from 'sequelize-typescript';
 import { Category } from './category.entity';
 import { ProductData, CategoryData } from '@kidsorg/amazon-common'
 
-@Table
-export class Product extends Model {
+export interface ProductAttributes {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    category_id: string;
+}
+
+export interface ProductCreationAttributes extends Optional<ProductAttributes, 'id'> { }
+
+@Table({ tableName: 'products' })
+export class Product extends Model<ProductAttributes, ProductCreationAttributes> {
     @PrimaryKey
+    @Default(DataTypes.UUIDV4)
     @Column(DataTypes.UUID)
     id: string;
 

@@ -301,37 +301,49 @@ services:
   #     - redis
   #     - warehouse
 
-  mysql:
-    image: mysql:8
-    platform: linux/x86_64
-    volumes:
-      - ./bin/mysql:/docker-entrypoint-initdb.d
-      - ./mysqldata:/var/lib/mysql
-    ports:
-      - 33060:3306
+  # mysql:
+  #   image: mysql:8
+  #   platform: linux/x86_64
+  #   volumes:
+  #     - ./bin/mysql:/docker-entrypoint-initdb.d
+  #     - ./mysqldata:/var/lib/mysql
+  #   ports:
+  #     - 33060:3306
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=root
+
+  pg:
+    image: postgres
+    container_name: amazon-pg
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: products
+    ports:
+      - "5432:5432"
 
   redis:
     image: redis:6.2.5-alpine
+    container_name: amazon-redis
     platform: linux/x86_64
     volumes:
       - ./redisdata:/data
     ports:
-      - 63790:6379
+      - 6379:6379
 
-  phpmyadmin:
-    image: phpmyadmin
-    platform: linux/x86_64
-    ports:
-      - 8080:80
-    environment:
-      - PMA_HOST=mysql
-    depends_on:
-      - mysql
+  # phpmyadmin:
+  #   image: phpmyadmin
+  #   platform: linux/x86_64
+  #   ports:
+  #     - 8080:80
+  #   environment:
+  #     - PMA_HOST=mysql
+  #   depends_on:
+  #     - mysql
 
   redis-commander:
     image: rediscommander/redis-commander:latest
+    container_name: amazon-redis-gui
     platform: linux/x86_64
     hostname: redis-commander
     environment:

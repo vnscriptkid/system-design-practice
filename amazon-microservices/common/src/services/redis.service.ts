@@ -1,4 +1,4 @@
-import { Redis } from 'ioredis';
+import Redis from 'ioredis';
 import { AppEvent } from '../events/event';
 
 export abstract class BaseRedisService {

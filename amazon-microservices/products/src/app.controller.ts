@@ -13,8 +13,8 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Post()
+  @Post('/api/v1/products')
   createProduct(@Body() request: CreateProductRequest) {
-
+    return this.createProductAction.execute(request);
   }
 }

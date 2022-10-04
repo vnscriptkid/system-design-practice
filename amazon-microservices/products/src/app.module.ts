@@ -1,3 +1,4 @@
+import Redis from 'ioredis';
 import { Module } from '@nestjs/common';
 import { CreateProductAction } from './actions/create-product.action';
 import { AppController } from './app.controller';
@@ -14,6 +15,8 @@ import { RedisService } from './redis.service';
     RedisService,
     ...productsProviders,
     ...categoriesProviders,
-    CreateProductAction],
+    CreateProductAction,
+    Redis
+  ],
 })
 export class AppModule { }
