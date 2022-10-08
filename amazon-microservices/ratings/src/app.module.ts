@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { productRatingsProviders, productsProviders } from './providers';
 import { RedisService } from './redis.service';
+import { RateProductAction } from './actions/rate-product.action';
 
 @Module({
   imports: [DatabaseModule],
@@ -15,6 +16,7 @@ import { RedisService } from './redis.service';
     Redis,
     ...productsProviders,
     ...productRatingsProviders,
+    RateProductAction
   ],
 })
 export class AppModule { }

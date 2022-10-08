@@ -11,3 +11,12 @@ Content-Type: application/json
     "price": 250,
     "category_id": "b36527ef-c9e6-4f1f-8a4c-e99a0e97ae77"
 }
+
+### Rate product
+POST http://localhost:3001/api/v1/products/eefa8d08-79cf-4532-87d5-675c518e6670/ratings
+Content-Type: application/json
+
+{
+    "comment": "good",
+    "rating": 20
+}

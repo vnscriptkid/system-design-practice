@@ -1,6 +1,8 @@
 import { AppEvent, EventTypes, ProductData } from '@kidsorg/amazon-common';
 import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common'
 import Redis from 'ioredis';
+import { CreateProductAction } from './actions/create-product.action';
 import { AppModule } from './app.module';
 import { Product } from './models/product.entity';
 
@@ -100,11 +102,7 @@ class ProductCreatedListener extends Listener<ProductCreatedEvent> {
 
   public async processMessage(data: ProductData) {
     try {
-      await this.getRepo().create({
-        id: data.id,
-        name: data.name,
-        price: data.price,
-      })
+      await new CreateProductAction(this.getRepo()).execute(data);
       console.info(`[processMessage] product inserted`)
     } catch (err) {
       console.error(`[processMessage] product insertion failed: `, err)
@@ -115,6 +113,8 @@ class ProductCreatedListener extends Listener<ProductCreatedEvent> {
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.useGlobalPipes(new ValidationPipe());
 
   const redis = app.get(Redis)
   const productsRepo = app.get('PRODUCTS_REPOSITORY') as typeof Product;

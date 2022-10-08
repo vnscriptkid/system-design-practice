@@ -5,7 +5,7 @@ import { Product, ProductAttributes } from './product.entity';
 export interface ProductRatingAttributes {
     id: string;
     product_id: string;
-    rating: string;
+    rating: number;
     comment: string;
     product: ProductAttributes;
 }

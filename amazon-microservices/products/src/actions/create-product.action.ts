@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException } from '@nestjs/common';
 import { Category } from 'src/models/category.entity';
 import { Product } from 'src/models/product.entity';
 import { RedisService } from 'src/redis.service';
@@ -12,6 +12,12 @@ export class CreateProductAction {
     ) { }
 
     async execute(attrs: { name: string, description: string, price: number, category_id: string }) {
+        const category = await this.categoriesRepo.findByPk(attrs.category_id);
+
+        if (!category) {
+            throw new NotFoundException('Category not found');
+        }
+
         const { id } = await this.productsRepo.create({
             name: attrs.name,
             description: attrs.description,
