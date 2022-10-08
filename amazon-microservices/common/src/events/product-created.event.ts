@@ -1,9 +1,12 @@
 import { ProductData } from "../dtos/product-data";
 import { AppEvent } from "./event";
+import { EventTypes } from "./event-types";
 
 export class ProductCreatedEvent extends AppEvent {
+    public readonly type = EventTypes.ProductCreated;
+
     constructor(
-        private readonly data: ProductData
+        public readonly data: ProductData
     ) {
         super()
     }
